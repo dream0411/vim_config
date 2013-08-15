@@ -527,42 +527,45 @@ function! PdbMapKeyboard()
 	" Keyboard shortcuts
 	"
 
-	map <buffer> <silent> <F5> :call PdbStartDebug(1, [])<CR>
-	" Start debug and don't pause immediately.
-	map <buffer> <silent> <C-F5> :call PdbStartDebug(0, [])<CR>
-	map <buffer> <silent> <C-S-F5> :call PdbStartDebugWithArguments()<CR>
-	map <buffer> <silent> <S-F5> :call PdbStopDebug()<CR>
-	map <buffer> <silent> <C-A-S-F5> :call PdbRestartDebug()<CR>
+	if $filetype=="python"
+		map <buffer> <silent> <F5> :call PdbStartDebug(1, [])<CR>
+		" Start debug and don't pause immediately.
+		map <buffer> <silent> <C-F5> :call PdbStartDebug(0, [])<CR>
+		map <buffer> <silent> <C-S-F5> :call PdbStartDebugWithArguments()<CR>
+		map <buffer> <silent> <S-F5> :call PdbStopDebug()<CR>
+		map <buffer> <silent> <C-A-S-F5> :call PdbRestartDebug()<CR>
 
-	map <buffer> <silent> <LocalLeader>l :call PdbLoadSavedBreakpoints()<CR>
-	map <buffer> <silent> <LocalLeader>s :call PdbSaveSavedBreakpoints()<CR>
+		map <buffer> <silent> <LocalLeader>l :call PdbLoadSavedBreakpoints()<CR>
+		map <buffer> <silent> <LocalLeader>s :call PdbSaveSavedBreakpoints()<CR>
 
-	map <buffer> <silent> <F7> :call PdbStepInto()<CR>
-	map <buffer> <silent> <F8> :call PdbStepOver()<CR>
-	map <buffer> <silent> <C-F8> :call PdbContinueUntilReturn()<CR>
+		map <buffer> <silent> <F7> :call PdbStepInto()<CR>
+		map <buffer> <silent> <F8> :call PdbStepOver()<CR>
+		map <buffer> <silent> <C-F8> :call PdbContinueUntilReturn()<CR>
 
-	map <buffer> <silent> <F9> :call PdbMoveUpInStackFrame()<CR>
-	map <buffer> <silent> <F10> :call PdbMoveDownInStackFrame()<CR>
+		map <buffer> <silent> <F9> :call PdbMoveUpInStackFrame()<CR>
+		map <buffer> <silent> <F10> :call PdbMoveDownInStackFrame()<CR>
 
-	map <buffer> <silent> <F6> :call PdbSetFocusToCurrentDebugLine()<CR>
-	map <buffer> <silent> <C-F6> :call PdbJumpToCurrentLine()<CR>
+		map <buffer> <silent> <F6> :call PdbSetFocusToCurrentDebugLine()<CR>
+		map <buffer> <silent> <C-F6> :call PdbJumpToCurrentLine()<CR>
 
-	map <buffer> <silent> <F2> :call PdbToggleBreakpointOnCurrentLine()<CR>
-	map <buffer> <silent> <C-F2> :call PdbToggleConditionalBreakpointOnCurrentLine()<CR>
-	map <buffer> <silent> <S-F2> :call PdbToggleTemporaryBreakpointOnCurrentLine()<CR>
-	map <buffer> <silent> <C-S-F2> :call PdbClearAllBreakpointsInCurrentFile()<CR>
-	map <buffer> <silent> <C-A-S-F2> :call PdbClearAllBreakpoints()<CR>
+		map <buffer> <silent> <F2> :call PdbToggleBreakpointOnCurrentLine()<CR>
+		map <buffer> <silent> <C-F2> :call PdbToggleConditionalBreakpointOnCurrentLine()<CR>
+		map <buffer> <silent> <S-F2> :call PdbToggleTemporaryBreakpointOnCurrentLine()<CR>
+		map <buffer> <silent> <C-S-F2> :call PdbClearAllBreakpointsInCurrentFile()<CR>
+		map <buffer> <silent> <C-A-S-F2> :call PdbClearAllBreakpoints()<CR>
 
-	map <buffer> <silent> <F11> :call PdbPrintBreakpointConditionOnCurrentLine()<CR>
+		map <buffer> <silent> <F11> :call PdbPrintBreakpointConditionOnCurrentLine()<CR>
 
-	map <buffer> <silent> <F4> :call PdbEvalCurrentWord()<CR>
-	map <buffer> <silent> <C-F4> :call PdbEvalCurrentWORD()<CR>
+		map <buffer> <silent> <F4> :call PdbEvalCurrentWord()<CR>
+		map <buffer> <silent> <C-F4> :call PdbEvalCurrentWORD()<CR>
 
-	map <buffer> <silent> <F3> :call PdbEvalExpression()<CR>
-	map <buffer> <silent> <C-F3> :call PdbExecStatement()<CR>
+		map <buffer> <silent> <F3> :call PdbEvalExpression()<CR>
+		map <buffer> <silent> <C-F3> :call PdbExecStatement()<CR>
 
-	map <buffer> <silent> <F12> :call PdbPrintStackTrace()<CR>
+		map <buffer> <silent> <F12> :call PdbPrintStackTrace()<CR>
+	endif
 endfunction
+autocmd FileType python call g:PdbMapKeyboard()
 
 
 " The format string for displaying a stack entry.
