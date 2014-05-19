@@ -89,6 +89,14 @@ let g:pydiction_location = '~/.vim/ftplugin/complete-dict'
 " key map
 :map <S-F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
+"setting for search in dir
+map <S-F> :call Search_Word_Dir() <CR>:lopen<CR>
+function Search_Word_Dir()
+	let w = expand("<cword>") " get current word under cursor
+	execute "lvim" w "**/*.*"
+endfunction
+
+nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
 "-- omnicppcomplete setting --
 " 按下F3自动补全代码，注意该映射语句后不能有其他字符，包括tab；否则按下F3会自动补全一些乱码
 imap <F3> <C-X><C-O>

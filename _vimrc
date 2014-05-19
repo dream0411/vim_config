@@ -62,6 +62,15 @@ let g:pydiction_location = 'F:\Program Files\Vim\vimfiles\ftplugin\complete-dict
 " key map
 :map <S-F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
+"setting for search in dir
+map <S-F> :call Search_Word_Dir() <CR>:lopen<CR>
+function Search_Word_Dir()
+	let w = expand("<cword>") " get current word under cursor
+	execute "lvim" w "**/*.*"
+endfunction
+
+nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
+
 " MiniBufExplorer
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
