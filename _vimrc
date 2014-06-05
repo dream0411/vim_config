@@ -70,6 +70,7 @@ function Search_Word_Dir()
 endfunction
 
 nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
+nnoremap <C-F10> :exe 'TlistToggle'<CR>
 
 " MiniBufExplorer
 let g:miniBufExplMapWindowNavVim = 1
