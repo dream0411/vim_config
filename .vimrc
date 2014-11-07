@@ -16,6 +16,11 @@ colorscheme ron        " elflord ron peachpuff default 设置配色方案，vim�
 
 set nobackup
 " detect file type
+if exists("g:did_load_filetypes")
+	filetype off
+	filetype plugin indent off
+endif
+set runtimepath+=/usr/local/go/misc/vim " replace $GOROOT with the output of: go env GOROOT
 filetype on
 filetype plugin on
 
@@ -89,15 +94,6 @@ let g:pydiction_location = '~/.vim/ftplugin/complete-dict'
 " key map
 :map <S-F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
-"setting for search in dir
-map <S-F> :call Search_Word_Dir() <CR>:lopen<CR>
-function Search_Word_Dir()
-	let w = expand("<cword>") " get current word under cursor
-	execute "lvim" w "**/*.*"
-endfunction
-
-nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
-nnoremap <C-F10> :exe 'TlistToggle'<CR>
 "-- omnicppcomplete setting --
 " 按下F3自动补全代码，注意该映射语句后不能有其他字符，包括tab；否则按下F3会自动补全一些乱码
 imap <F3> <C-X><C-O>
@@ -116,6 +112,19 @@ let OmniCpp_DisplayMode=1 " Class scope completion mode: always show all members
 let OmniCpp_ShowScopeInAbbr=1 " show scope in abbreviation and remove the last column
 let OmniCpp_ShowAccess=1 
 
+"setting for search in dir
+map <S-F> :call Search_Word_Dir() <CR>:lopen<CR>
+function Search_Word_Dir()
+	let w = expand("<cword>") " get current word under cursor
+	execute "lvim" w "**/*.*"
+endfunction
+
+nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
+nnoremap <C-F10> :exe 'TlistToggle'<CR>
+
+" golang
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+autocmd FileType go compiler go
 
 "ctags"  
 "========================="  

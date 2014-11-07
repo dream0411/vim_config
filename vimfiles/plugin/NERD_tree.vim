@@ -92,7 +92,7 @@ if !exists('g:NERDTreeStatusline')
 
 endif
 call s:initVariable("g:NERDTreeWinPos", "left")
-call s:initVariable("g:NERDTreeWinSize", 31)
+call s:initVariable("g:NERDTreeWinSize", 21)
 
 "init the shell commands that will be used to copy nodes, and remove dir trees
 "
