@@ -6,6 +6,7 @@ I save these vim's setting files here, so I can use them everywhere.
 - auto complete
 - VimPdb for python
 - NerdTree
+- Taglist
 - CtrlP
 - html/xml ftplugin
-
+- Golang plugin: gocode, godef, auto complete, gofmt
