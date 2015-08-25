@@ -65,7 +65,7 @@ let g:pydiction_location = 'F:\Program Files\Vim\vimfiles\ftplugin\complete-dict
 "setting for search in dir
 map <S-F> :call Search_Word_Dir() <CR>:lopen<CR>
 function Search_Word_Dir()
-	let w = expand("<cword>") " get current word under cursor
+	let w = "/\\<" . expand("<cword>") . "\\>/" " get current word under cursor
 	execute "lvim" w "**/*.*"
 endfunction
 

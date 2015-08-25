@@ -92,7 +92,9 @@ set tags+=usr/include/c++/tags
 let g:pydiction_location = '~/.vim/ftplugin/complete-dict'
 
 " key map
-:map <S-F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+":map <S-F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+" for mac
+:map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
 "-- omnicppcomplete setting --
 " 按下F3自动补全代码，注意该映射语句后不能有其他字符，包括tab；否则按下F3会自动补全一些乱码
@@ -119,8 +121,15 @@ function Search_Word_Dir()
 	execute "lvim" w "**/*.*"
 endfunction
 
-nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
-nnoremap <C-F10> :exe 'TlistToggle'<CR>
+"nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
+"nnoremap <C-F10> :exe 'TlistToggle'<CR>
+"map <C-F3> :exe 'lnext'<CR>
+"map <C-F2> :exe 'lprevious'<CR>
+" for mac
+map <F9> :exe 'NERDTreeToggle'<CR>
+map <F10> :exe 'TlistToggle'<CR>
+map <F3> :exe 'lnext'<CR>
+map <F2> :exe 'lprevious'<CR>
 
 " golang
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
