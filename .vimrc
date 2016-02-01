@@ -116,7 +116,11 @@ let OmniCpp_ShowAccess=1
 map <S-F> :call Search_Word_Dir() <CR>:lopen<CR>
 function Search_Word_Dir()
 	let w = "/\\<" . expand("<cword>") . "\\>/" " get current word under cursor
-	execute "lvim" w "**/*.*"
+	let ft = "*"
+	if &filetype=="go" 
+		let ft = &filetype
+	endif
+	execute "lvim" w "**/*.".ft
 endfunction
 
 nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
