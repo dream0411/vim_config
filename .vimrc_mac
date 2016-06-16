@@ -50,7 +50,7 @@ set shiftwidth=4    " (自动) 缩进使用的4个空格
 set cindent            " 使用 C/C++ 语言的自动缩进方式
 "set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s     "设置C/C++语言的具体缩进方式
 set cinoptions=(0,t0
-"set backspace=2    " 设置退格键可用
+set backspace=2    " 设置退格键可用
 set showmatch        " 设置匹配模式，显示匹配的括号
 set linebreak        " 整词换行
 set whichwrap=b,s,<,>,[,] " 光标从行首和行末时可以跳到另一行去
@@ -118,7 +118,11 @@ let OmniCpp_ShowAccess=1
 map <S-F> :call Search_Word_Dir() <CR>:lopen<CR>
 function Search_Word_Dir()
 	let w = "/\\<" . expand("<cword>") . "\\>/" " get current word under cursor
-	execute "lvim" w "**/*.*"
+	let ft = "*"
+	if &filetype=="go" 
+		let ft = &filetype
+	endif
+	execute "lvim" w "**/*.".ft
 endfunction
 
 "nnoremap <C-F9> :exe 'NERDTreeToggle'<CR>
@@ -128,6 +132,7 @@ endfunction
 " for mac
 map <F9> :exe 'NERDTreeToggle'<CR>
 map <F10> :exe 'TlistToggle'<CR>
+
 map <F3> :exe 'lnext'<CR>
 map <F2> :exe 'lprevious'<CR>
 
